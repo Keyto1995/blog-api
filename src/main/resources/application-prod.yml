@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  devtools:
+    add-properties: false
+
+server:
+  port: 80

@@ -1,0 +1,15 @@
+spring:
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  jackson:
+    serialization:
+      indent_output: true
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    top.keyto: DEBUG
