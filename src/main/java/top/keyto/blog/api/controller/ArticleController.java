@@ -7,7 +7,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -95,11 +94,9 @@ public class ArticleController {
     }
 
     @GetMapping("/{id}")
-    public Article getArticle(@PathVariable("id") Long id, Model model) {
+    public Article getArticle(@PathVariable("id") Long id) {
         log.debug("[get] article called: id={}", id);
-        Article article = articleService.getById(id);
-        model.addAttribute("article", article);
-        return article;
+        return articleService.getById(id);
     }
 
     @PutMapping("/{id}/tags/")

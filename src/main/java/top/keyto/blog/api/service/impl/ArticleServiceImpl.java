@@ -8,6 +8,7 @@ import top.keyto.blog.api.dao.ArticleDao;
 import top.keyto.blog.api.dao.TagDao;
 import top.keyto.blog.api.entity.Article;
 import top.keyto.blog.api.entity.Tag;
+import top.keyto.blog.api.exception.NotFoundException;
 import top.keyto.blog.api.service.ArticleService;
 
 import java.util.Date;
@@ -36,7 +37,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Article getById(Long id) {
-        return articleDao.findById(id).orElse(new Article());
+        return articleDao.findById(id).orElseThrow(() -> new NotFoundException("未能找到相应文章|id:" + id));
     }
 
     @Override

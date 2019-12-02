@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import top.keyto.blog.api.dto.ResultDTO;
+import top.keyto.blog.api.exception.NotFoundException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,5 +33,12 @@ public class GlobalExceptionHandler {
         log.error("认证全局异常处理：", ex);
         throw ex;
 //        return ResultDTO.FAILE("-1", ex.getLocalizedMessage(), null);
+    }
+
+    @ExceptionHandler(NotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Object notFoundExceptionHandler(HttpServletRequest request, Exception ex, HttpServletResponse response) {
+        log.error("未找到全局异常处理：", ex);
+        return ResultDTO.FAILE("40004", ex.getLocalizedMessage(), null);
     }
 }
