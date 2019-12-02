@@ -1,0 +1,17 @@
+version: '3.1'
+services:
+  blog-api:
+    build: .
+    image: 'keyto/blog-api:latest'
+    container_name: blog-api
+    ports:
+      - "80"
+    networks:
+      - web
+      - mysql
+
+networks:
+  web:
+    external: true
+  mysql:
+    external: true
