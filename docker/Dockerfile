@@ -9,9 +9,9 @@ RUN set -ex \
 
 FROM keyto/jdk-autoheap:latest
 
-COPY --from=builder /blog-api/target/blog-api-0.0.1-SNAPSHOT.jar  /app
-
 WORKDIR /app
+
+COPY --from=builder /blog-api/target/blog-api-0.0.1-SNAPSHOT.jar  /app
 
 COPY config/ config/
 
